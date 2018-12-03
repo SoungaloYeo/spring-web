@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    </head>
+    <body>
+
+        <div th:replace="header :: navbar">      </div>
+
+        <div class="row text-center">
+            <img  width="100%" height="400px"   th:src="@{/img/jhipster.png}"/>
+        </div>
+        <h1 style="margin-top: 50px"  class="text-center">AJOUTER UN BENEFICIAIRE</h1>
+
+        <div class="container">
+            <form th:object="${beneficiaire}" th:action="@{/benef/ajouter}" method="post">
+
+                <input type="text"  th:field="*{codeB}" class="form-control"  placeholder="id" />
+
+                <div class="form-group">
+                    <label >NOM</label>
+                    <input type="text" th:field="*{nom}" class="form-control"  placeholder="nom" />
+                </div>
+                <div class="form-group">
+                    <label>PRENOM</label>
+                    <input type="text" th:field="*{prenom}" class="form-control" placeholder="prenom"/>
+                </div>
+                <div class="form-group">
+                    <label>SOLDE</label>
+                    <input type="number" th:field="*{solde}" class="form-control"  placeholder="solde"/>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-9"></div>
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-warning" 
+                                data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">&nbsp;Valider&nbsp;</button>
+                    </div>
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-primary">Annuler</button>
+                    </div>
+
+                    <!--================================================== creation du modal ===================================================-->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+
+                                <div class="modal-body alert-danger" style="text-align: center">
+                                    <h3>Vous confirmez la modification?</h3>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="reset" data-dismiss="modal" class="btn btn-primary btn-sm form-button">Annuler</button>
+                                    <button type="submit" class="btn btn-danger">Confirmé</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    </body>
+</html>
